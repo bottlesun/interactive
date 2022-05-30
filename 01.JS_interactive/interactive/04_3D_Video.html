@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+    img{
+        position: absolute;
+    }
+    video{
+        position: absolute;
+    }
+
+    </style>
+</head>
+<body>
+
+<img src="https://paidpost-assets.nyt.com/paidpost/allbirds/birds-eye-view/images/1-b90e91a4.png" alt="">
+
+<img src="https://paidpost-assets.nyt.com/paidpost/allbirds/birds-eye-view/images/2-f3fd6cf5.png" alt="">
+
+<div class="vod"><video autoplay="" playsinline="" loop="" muted="" src="https://paidpost-assets.nyt.com/paidpost/allbirds/birds-eye-view/videos/3-27c8c3ea.webm"></video></div>
+
+<img src="https://paidpost-assets.nyt.com/paidpost/allbirds/birds-eye-view/images/4-105dd65b.png" alt="">
+
+<img src="https://paidpost-assets.nyt.com/paidpost/allbirds/birds-eye-view/images/5-ac49bfdc.png" alt="">
+
+<script>
+
+
+    let X  = 0;
+    let Y = 0;
+    let mouseX = 0;
+    let mouseY = 0;
+    let speed = 0.05; // 마우스가 따라 올 속도
+    let _imgArr;
+    let _bird;
+
+
+    window.onload = () =>{
+
+        window.addEventListener('mousemove',mouseFunc,false);
+
+        _imgArr = document.getElementsByTagName('img');
+        _bird = document.getElementsByTagName('div')[0];
+
+
+        function mouseFunc(e) {
+            // 화면 전체에서 window 화면 사이즈 반 만큼 빼준다.
+            X = (e.clientX - window.innerWidth / 2);
+            Y = (e.clientY - window.innerHeight / 2);
+        }
+         loop()
+    }
+
+    function loop(){
+        // 자연스러운 움직임 무한 루프를 줘서 모션의 움직임을 자연스럽게 할때 사용
+        mouseX += (X - mouseX) * speed; // 공식
+        mouseY += (Y - mouseY) * speed;
+
+        // -값을 주면 반대로 움직이게 된다.
+            _imgArr[0].style.transform = `translate(${-(mouseX/9)}px,${-(mouseY/9)}px)`;
+            _imgArr[1].style.transform = `translate(${-(mouseX/3)}px,${-(mouseY/3)}px)`;
+            _imgArr[2].style.transform = `translate(${(mouseX/5)}px,${(mouseY/5)}px)`;
+            _imgArr[3].style.transform = `translate(${(mouseX/9)}px,${(mouseY/9)}px)`;
+
+
+             _bird.style.transform = `translate(${-(mouseX/10)}px,${-(mouseY/10)}px)`;
+
+
+        window.requestAnimationFrame(loop);
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+body {
+  width: 100%;
+  height: 100%;
+}
+
+section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+section img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  object-fit: cover;
+}
+
+.parallax .bg {
+  width: 120vw;
+  height: 120vh;
+  left: 0;
+  top: 0;
+  transform: scale(1.3);
+}
+.parallax .plane {
+  top: 90vh;
+  left: 0;
+  height: 400px;
+  width: 400px;
+  transform: rotate(40deg);
+}
+.parallax .building {
+  width: 100%;
+  height: 100%;
+  transform: scale(1.3);
+}
+.parallax:after {
+  content: "";
+  height: 30vh;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 20%, black);
+}
+
+.hero-text {
+  background: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-text h2 {
+  font-size: 5vw;
+  font-weight: 300;
+}
+.hero-text h2 strong {
+  display: block;
+}
+.hero-text h2 strong span {
+  color: #88ce02;
+}
+
+/*# sourceMappingURL=scrollTrigger.css.map */

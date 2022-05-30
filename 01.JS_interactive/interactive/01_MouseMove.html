@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+      body{
+        position: relative;
+        background: #333333;
+      }
+      h1{
+        color:#fff;
+      }
+      .cursor_item{
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: #970000;
+        top: 0;
+        left: 0;
+        margin: -20px 0 0 -20px;
+      }
+    </style>
+</head>
+<body>
+  <h1>TEST</h1>
+
+  <div class="cursor_item"></div>
+
+  <script>
+    let X  = 0;
+    let Y = 0;
+    let mouseX = 0;
+    let mouseY = 0;
+
+    let speed = 0.05; // 마우스가 따라 올 속도
+    let cursorItem;
+
+    window.onload = () =>{
+      h1 = document.getElementsByTagName('h1')[0];
+      cursorItem = document.getElementsByClassName('cursor_item')[0];
+
+     window.addEventListener('mousemove',mouseFunc,false);
+
+      function mouseFunc(e) {
+        X = e.clientX;
+        Y = e.clientY;
+
+      }
+      loop()
+    }
+
+    function loop(){
+      // 자연스러운 움직임 무한 루프를 줘서 모션의 움직임을 자연스럽게 할때 사용
+      mouseX += (X - mouseX) * speed; // 공식
+      mouseY += (Y - mouseY) * speed;
+
+      h1.innerHTML = `X : ${X} Y : ${Y}`;
+
+      cursorItem.style.transform = `translate(${mouseX}px,${mouseY}px)`;
+      window.requestAnimationFrame(loop);
+    }
+
+
+  </script>
+</body>
+</html>

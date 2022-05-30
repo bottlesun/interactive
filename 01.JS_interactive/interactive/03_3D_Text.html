@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        body{
+            position: relative;
+            background: #333333;
+            overflow: hidden;
+        }
+        h1{
+            color:#fff;
+        }
+        .human{
+            position: absolute;
+            width: 200px;
+            left: calc(50% - 100px);
+            z-index: 100;
+        }
+        .bg{
+            width: 100%;
+            height: 100vh;
+        }
+        .text3d{
+            position: absolute;
+            z-index: 50;
+            font-size: 100px;font-weight: bold;
+            color: #fff;
+            left: calc(50% - 200px);
+            top: calc(50% - 200px);
+            text-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        }
+
+
+    </style>
+</head>
+<body>
+<h1>TEST</h1>
+
+<img src="./img/layer-7.png" alt="" class="human">
+<img src="./img/layer-1.jpg" alt="" class="bg">
+<div class="text3d">TEXT STYLE</div>
+
+<script>
+    let human;
+    let bg;
+    let h1;
+    let text3d;
+
+    let X  = 0;
+    let Y = 0;
+    let mouseX = 0;
+    let mouseY = 0;
+    let speed = 0.05; // 마우스가 따라 올 속도
+
+    window.onload = () =>{
+        h1 = document.getElementsByTagName('h1')[0];
+        human = document.getElementsByClassName('human')[0];
+        bg = document.getElementsByClassName('bg')[0];
+        text3d = document.getElementsByClassName('text3d')[0];
+
+        window.addEventListener('mousemove',mouseFunc,false);
+
+        function mouseFunc(e) {
+            // 화면 전체에서 window 화면 사이즈 반 만큼 빼준다.
+            X = (e.clientX - window.innerWidth / 2);
+            Y = (e.clientY - window.innerHeight / 2);
+        }
+        loop()
+    }
+
+    function loop(){
+        // 자연스러운 움직임 무한 루프를 줘서 모션의 움직임을 자연스럽게 할때 사용
+        mouseX += (X - mouseX) * speed; // 공식
+        mouseY += (Y - mouseY) * speed;
+
+        h1.innerHTML = `X : ${X} Y : ${Y}`;
+
+        // -값을 주면 반대로 움직이게 된다.
+        human.style.transform = `translate(${-(mouseX/6)}px,${-(mouseY/6)}px)`;
+        bg.style.transform = `translate(${(mouseX/10)}px,${(mouseY/10)}px)`;
+
+        //rotate3d 속성
+       text3d.style.transform = "translate3d("+ -(mouseX/2) +"px," + -(mouseY/2) +"px,0) rotate3d(0,1,0,"+ -mouseX / 50 +"deg)";
+
+        window.requestAnimationFrame(loop);
+    }
+
+
+</script>
+</body>
+</html>
