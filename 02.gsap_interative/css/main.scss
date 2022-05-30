@@ -1,3 +1,4 @@
+
 section{
   width: 100%;
   height: 100vh;
@@ -6,6 +7,8 @@ section{
   justify-content: center;
   align-items: center;
   background: #000;
+  overflow: hidden;
+
   div{
     width: 100%;
     height: 100vh;
@@ -17,20 +20,26 @@ section{
       font-size: 2rem;
       font-weight: 500;
       letter-spacing: 0.03em;
+      display: flex;
+      overflow: hidden;
       span{
         font-size: 3rem;
         font-weight: 700;
         color:#88ce02;
+        display: block;
       }
     }
   }
 
+
   ul{
-    padding-top: 2%;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
     li{
       position: relative;
-      margin: 50px 5px;
+      margin: 5px 5px;
       &:not(:first-child)::before{
         content: " | ";
         color:#fff;
@@ -41,5 +50,4 @@ section{
       }
     }
   }
-
 }

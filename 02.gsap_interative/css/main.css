@@ -6,6 +6,7 @@ section {
   justify-content: center;
   align-items: center;
   background: #000;
+  overflow: hidden;
 }
 section div {
   width: 100%;
@@ -25,18 +26,18 @@ section div h2 {
 section div h2 span {
   font-size: 3rem;
   font-weight: 700;
-  display: block;
   color: #88ce02;
+  display: block;
 }
 section ul {
-  padding-top: 2%;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 section ul li {
   position: relative;
-  margin: 50px 5px;
+  margin: 5px 5px;
 }
 section ul li:not(:first-child)::before {
   content: " | ";
